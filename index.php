@@ -13,9 +13,27 @@ require("vendor/autoload.php");
 // :: means to invoke a static method. -> means to use an instance method
 $f3 = Base::instance();
 
+// Instantiate controller object
+$controller = new ChickenController($f3);
+
 $f3->route('GET /', function() {
-    $view = new Template();
-    echo $view->render('views/all-about-chickens.html');
+    //$GLOBALS['controller']->home();
+    //$controller->home();
+
+    // same as above to lines
+    global $controller;
+    $controller->home();
+
+});
+
+$f3->route('GET /eggs', function() {
+    //$GLOBALS['controller']->home();
+    //$controller->home();
+
+    // same as above to lines
+    global $controller;
+    $controller->eggs();
+
 });
 
 // Run F3
